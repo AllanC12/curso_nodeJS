@@ -1,0 +1,9 @@
+const url = require('url')
+
+const address = 'http://www.meusite.com/catalog?products=cadeira'
+const parsedUrl = new url.URL(address)
+
+console.log(parsedUrl.hostname)
+console.log(parsedUrl.searchParams.get('products'))
+console.log(parsedUrl.search)
+console.log(parsedUrl.searchParams)
