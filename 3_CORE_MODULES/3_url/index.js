@@ -1,6 +1,6 @@
 const url = require('url')
 
-const address = 'http://www.meusite.com/catalog?products=cadeira'
+const address = 'http://www.meusite.com/catalog?products=cadeira&objects=mesa'
 const parsedUrl = new url.URL(address)
 
 console.log(parsedUrl.hostname)
