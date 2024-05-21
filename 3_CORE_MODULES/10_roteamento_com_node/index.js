@@ -8,6 +8,7 @@ const server = http.createServer((req,res) => {
     const q = url.parse(req.url,true)
     const fileName = q.pathname.substring(1)
 
+    
     if(fileName.includes('html')){
         if(fs.existsSync(fileName)){
             fs.readFile(fileName,(err,data) => {
