@@ -1,0 +1,1 @@
+testando leitura de arquivo em node com fs!!!
