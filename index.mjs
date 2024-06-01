@@ -22,7 +22,7 @@ const operation = () => {
       }else if(action === 'Consultar Saldo'){
 
       }else if(action === 'Depositar'){
-
+        deposit()
       }else if(action === 'Sacar'){
 
       }else if(action === 'Sair'){
@@ -81,3 +81,30 @@ const buildAccount = () => {
       operation()
     });
 };
+
+const deposit = () => {
+  inquirer.prompt([
+    {
+      name: 'accountName',
+      message: 'Em qual conta deseja depositar?'
+    }
+  ]).then(answer => {
+    const accountName = answer['accountName']
+
+    if(!checkAccount(accountName)){
+      return deposit()
+    }
+
+  }).catch(err => {
+    console.log(err)
+  })
+}
+
+const checkAccount = (accountName) => {
+  if(!fs.existsSync(`accounts/${accountName}.json`)){
+    console.log(chalk.bgRed.black('Nenhuma conta encontrada com este nome...'))
+    return false
+  }
+
+  return true
+}
