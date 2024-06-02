@@ -26,7 +26,7 @@ const operation = () => {
       }else if(action === 'Sacar'){
 
       }else if(action === 'Sair'){
-        console.log(chalk.bgBlue.black('Obrigado por usar o ACCOUNTS!'))
+        console.log(chalk.bgBlueBright.black('Obrigado por usar o ACCOUNTS!'))
         process.exit()
       }
     })
@@ -95,6 +95,21 @@ const deposit = () => {
       return deposit()
     }
 
+    inquirer.prompt([{
+      name: 'amount',
+      message: 'Quanto você deseja depositar?'
+    }]).then(answer => {
+      const amount = answer['amount']
+
+      if(!amount){
+        console.log(chalk.bgRed.black('Ocorreu um erro, por favor tente mais tarde...'))
+      }
+
+     addAmount(accountName,amount)
+     operation()
+
+    }).catch(err => console.log(err))
+
   }).catch(err => {
     console.log(err)
   })
@@ -108,3 +123,24 @@ const checkAccount = (accountName) => {
 
   return true
 }
+
+const addAmount = (accountName,amount) => {
+  const accountData = getAccount(accountName)
+  accountData.balance = parseFloat(amount) + parseFloat(accountData.balance)
+  
+  fs.writeFileSync(`accounts/${accountName}.json`,JSON.stringify(accountData),(err) => {
+    console.log(err)
+  })
+
+  console.log(chalk.bgGreen.black(`Foi depositado um valor de R$${amount} na sua conta!`))
+}
+
+const getAccount = (accountName) => {
+  const accountJSON = fs.readFileSync(`accounts/${accountName}.json`,{
+    encoding: 'utf8',
+    flag: 'r'
+  })
+
+  return JSON.parse(accountJSON)
+}
+
