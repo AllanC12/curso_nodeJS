@@ -103,6 +103,7 @@ const deposit = () => {
 
       if(!amount){
         console.log(chalk.bgRed.black('Ocorreu um erro, por favor tente mais tarde...'))
+        return deposit()
       }
 
      addAmount(accountName,amount)
