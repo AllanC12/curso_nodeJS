@@ -32,7 +32,7 @@ app.get('/post',(req,res) => {
         comments: 4
     }
 
-    res.render('blogposts',{post})
+    res.render('/blogposts',{post})
 })
 
 app.listen(port,() => {
