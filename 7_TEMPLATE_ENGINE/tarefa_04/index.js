@@ -14,35 +14,37 @@ app.engine('handlebars',hbs.engine)
 app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 
+const products = [
+    {
+        id: '1',
+        title: 'Teclado',
+        price: 50.00
+    },
+    {
+        id: '2',
+        title: 'mouse',
+        price: 30.00
+    },
+    {
+        id: '3',
+        title: 'Cadeira',
+        price: 300.00
+    },
+    {
+        id: '4',
+        title: 'Mesa',
+        price: 500.00
+    }
+]
+
 app.get('/products/:id',(req,res) => {
     const id = req.params.id
-    console.log(id)
-    res.send('Exibindo dados do produto: ' + id)
+    const product = products[parseInt(id - 1)]
+    console.log(product)
+    res.render('productSingle',{product})
 })
 
 app.get('/',(req,res) => {
-    const products = [
-        {
-            id: '1',
-            title: 'Teclado',
-            price: 50.00
-        },
-        {
-            id: '2',
-            title: 'mouse',
-            price: 30.00
-        },
-        {
-            id: '3',
-            title: 'Cadeira',
-            price: 300.00
-        },
-        {
-            id: '4',
-            title: 'Mesa',
-            price: 500.00
-        }
-    ]
 
     res.render('products',{products})
 })
