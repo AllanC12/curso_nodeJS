@@ -1,4 +1,3 @@
-const { privateDecrypt } = require('crypto')
 const express = require('express')
 const app = express()
 
@@ -13,32 +12,33 @@ const hbs = exphbs.create({
 
 app.engine('handlebars',hbs.engine)
 app.set('view engine', 'handlebars')
+app.use(express.static('public'))
 
 app.get('/products/:id',(req,res) => {
     const id = req.params.id
-    
-    res.render('Exibindo dados do produto: ' + id)
+    console.log(id)
+    res.send('Exibindo dados do produto: ' + id)
 })
 
 app.get('/',(req,res) => {
     const products = [
         {
-            id: 1,
+            id: '1',
             title: 'Teclado',
             price: 50.00
         },
         {
-            id: 2,
+            id: '2',
             title: 'mouse',
             price: 30.00
         },
         {
-            id: 4,
+            id: '3',
             title: 'Cadeira',
             price: 300.00
         },
         {
-            id: 5,
+            id: '4',
             title: 'Mesa',
             price: 500.00
         }
