@@ -1,14 +1,14 @@
 const express = require('express')
 const app = express()
-const exphbs = require('express-handlebars')
 const mysql = require('mysql')
+const exphbs = require('express-handlebars')
+
+const port = 5000
 
 app.engine('handlebars',exphbs.engine())
 app.set('view engine','handlebars')
 
-app.use(express.static('public'))
-
-const port = 5000
+app.use(express.static('publid'))
 
 app.get('/',(req,res) => {
     res.render('home')
@@ -21,10 +21,9 @@ const conn = mysql.createConnection({
     database: 'database_01'
 })
 
-conn.connect( (err) => {
+conn.connect((err) => {
     if(err){
-        console.log(err)
-        return
+        throw new Error(err)
     }
 
     app.listen(port,() => {
