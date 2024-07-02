@@ -8,10 +8,29 @@ const port = 5000
 app.engine('handlebars',exphbs.engine())
 app.set('view engine','handlebars')
 
-app.use(express.static('publid'))
+app.use(express.static('public'))
+
+app.use(
+    express.urlencoded({
+    extended: true
+}))
+
+app.use(express.json())
 
 app.get('/',(req,res) => {
     res.render('home')
+})
+
+app.post('/books/insert_books',(req,res) => {
+    const title = req.body.title
+    const pages = req.body.pages
+
+    const query = `INSERT INTO books (title,pages) VALUES ('${title}', '${pages}')`
+    conn.query(query, (err) => {
+        console.log(err)
+    })
+
+    res.redirect('/')
 })
 
 const conn = mysql.createConnection({
