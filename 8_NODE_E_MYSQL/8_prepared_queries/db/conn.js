@@ -1,11 +1,10 @@
 const mysql = require('mysql')
-
-const conn = mysql.createPool({
-    connectionLimit: 30,
+const conn =  mysql.createPool({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'database_01'
+    database: 'database_01',
+    connectionLimit: 10
 })
 
 module.exports = conn
