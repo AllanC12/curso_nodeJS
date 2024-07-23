@@ -33,4 +33,12 @@ input[type="submit"]{
     text-align: center;
 }
 
+.form-checkbox{
+    flex-direction: row;
+}
+
+.form-checkbox input{
+    margin-right: 10px;
+}
+
 

@@ -20,9 +20,30 @@ app.use(
 
 app.use(express.json());
 
+
+app.get('/users/create',(req,res) => {
+  res.render('addUsers')
+})
+
+app.post('/users/create', async (req,res) => {
+  const name = req.body.name
+  const occupation = req.body.occupation
+  let newsletter = req.body.newsletter
+
+  if(newsletter === "on"){
+    newsletter = true
+  }else{
+    newsletter = false
+  }
+
+   await User.create({name,occupation,newsletter})
+  res.redirect('/')
+})
+
 app.get("/", (req, res) => {
   res.render("home");
 });
+
 
 conn
   .sync()
