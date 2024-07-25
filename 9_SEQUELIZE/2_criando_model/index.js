@@ -25,18 +25,21 @@ app.get('/users/create',(req,res) => {
   res.render('addUsers')
 })
 
-app.post('/users/create', async (req,res) => {
+app.post('/users/create',async (req,res) => {
   const name = req.body.name
   const occupation = req.body.occupation
   let newsletter = req.body.newsletter
 
+  
   if(newsletter === "on"){
     newsletter = true
   }else{
     newsletter = false
   }
+  
+    User.create({name,occupation,newsletter})
 
-   await User.create({name,occupation,newsletter})
+
   res.redirect('/')
 })
 
