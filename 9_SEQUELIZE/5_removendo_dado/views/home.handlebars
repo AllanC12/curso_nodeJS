@@ -1,0 +1,9 @@
+<h2>Usuários cadastrados:</h2>
+{{#each users}}
+    <ul>
+        <li>{{this.name}}</li>
+    </ul>
+    <form action="/users/delete/{{this.id}}" method="POST">
+        <input type="submit" value="Excluir" class="delete-btn">
+    </form>
+{{/each}}
