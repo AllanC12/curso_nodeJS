@@ -1,0 +1,7 @@
+<h3>Lista de usuários</h3>
+
+{{#each users}}
+  <h4>{{this.name}}</h4>
+   <p>{{this.occupation}}</p>
+    <a href="/users/edit/{{this.id}}">detalhes</a>
+{{/each}}
