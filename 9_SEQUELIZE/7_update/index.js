@@ -53,8 +53,9 @@ app.get("/", async (req, res) => {
 });
 
 connection
-  .sync()
-  .then(() => {
+  // .sync()
+  .sync({force: true})
+  .then(() => { 
     app.listen(port, () => {
       console.log(`app running on port ${port}`);
     });
