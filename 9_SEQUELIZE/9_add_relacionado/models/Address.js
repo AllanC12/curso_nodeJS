@@ -1,5 +1,6 @@
 const {DataTypes} = require('sequelize')
 const connection = require('../database/conn')
+const People = require('./People')
 
 const Address = connection.define('Address', {
     street: {
@@ -16,6 +17,6 @@ const Address = connection.define('Address', {
     }
 })
 
-Address.belongsTo(Address)
+Address.belongsTo(People)
 
 module.exports = Address

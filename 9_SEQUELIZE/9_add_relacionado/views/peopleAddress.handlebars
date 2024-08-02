@@ -1,0 +1,20 @@
+<h2>People:</h2>
+<h1>Adicionando endereço:</h1>
+<form action="/person/add_address" method="POST" class="form">
+    <input type="hidden" name="PersonId" value="{{people.id}}">
+    <div class="form-control">
+        <label for="name">Rua:</label>
+        <input type="text" name="street" placeholder="Digite o nome da rua">
+    </div>
+    <div class="form-control">
+        <label for="number">Número:</label>
+        <input type="text" name="number" placeholder="Digite o numero da casa">
+    </div>
+    <div class="form-control">
+        <label for="city">Cidade:</label>
+        <input type="text" name="city" placeholder="Digite o nome da cidade">
+    </div>
+
+    <input type="submit" value="Adicionar">
+</form>
+
