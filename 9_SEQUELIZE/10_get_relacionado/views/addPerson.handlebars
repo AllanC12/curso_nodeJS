@@ -1,0 +1,26 @@
+<h2>Lista de usuários</h2>
+<h1>Adicionar endereço</h1>
+<form action="/person/add_person" method="POST" class="form">
+    <input type="hidden" name="id">
+    <div class="form-control">
+        <label for="name">Nome:</label>
+        <input type="text" name="name" placeholder="Digite o nome do usuário">
+    </div>
+    <div class="form-control">
+        <label for="occupation">Profissão:</label>
+        <input type="text" name="occupation" placeholder="Digite a profissão">
+    </div>
+
+    <div class="form-control form-checkbox">
+        {{#if user.newsletter}}
+             <input type="checkbox" name="newsletter" checked>
+        {{else}}
+            <input type="checkbox" name="newsletter">
+        {{/if}}
+        <label for="newsletter">
+            Enviar promoções?
+        </label>
+    </div>
+
+    <input type="submit" value="Cadastrar">
+</form>

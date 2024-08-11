@@ -1,0 +1,11 @@
+<h2>Endereço usuário {{people.id}}</h2>
+{{#each people}}
+    <h2>{{this.name}}</h2>
+    <p>{{this.occupation}}</p>
+{{/each}}
+
+{{#each people.Addresses}}
+    <h2>{{this.street}} - {{this.city}}  - {{this.number}}</h2>
+{{/each}}
+    <a href="/person/{{this.id}}">Adicionar endereço</a>
+    <a href="/add_person">Cadastrar pessoas</a>
