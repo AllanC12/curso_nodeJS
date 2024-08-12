@@ -52,13 +52,30 @@ app.get("/person/:id", async (req, res) => {
   const id = req.params.id;
 
   try {
-    const people = await People.findOne({ include: Address, where: { id: id } });
-    res.render("people", { people: people.get({plain: true}) });
-    console.log(people)
-    
+    const people = await People.findOne({
+      include: Address,
+      where: { id: id },
+    });
+    res.render("people", { people: people.get({ plain: true }) });
+    console.log(people);
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
+});
+
+app.post("/address/delete", async (req, res) => {
+  const personId = req.body.PersonId;
+  const id = req.body.id;
+
+  try {
+    await Address.destroy({
+      where: { id: id },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+
+  res.redirect(`/person/${personId}`);
 });
 
 app.get("/", async (req, res) => {
