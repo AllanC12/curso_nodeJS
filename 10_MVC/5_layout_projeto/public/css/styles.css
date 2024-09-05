@@ -50,8 +50,14 @@ form .form-control input,form .form-control textarea{
 }
 
 input[type="submit"]{
+    transition: .5s;
     padding: 8px 15px;
     background-color: black;
     color: #fff;
     margin: 0 30px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover{
+    background-color: #353232;
 }
