@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+h2{
+    text-align: center;
+    margin-top: 20px;
+}
+
 form{
     
     width: 100%;
@@ -61,3 +66,52 @@ input[type="submit"]{
 input[type="submit"]:hover{
     background-color: #353232;
 }
+
+.task-list {
+    list-style: none;
+    padding-top: 1em;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.task-list li{
+    padding: .5em;
+    margin-bottom: 1em;
+    border-bottom: 1px solid #efefef;
+    display: flex;
+    justify-content: space-between;
+    color: #000;
+}
+
+.task-list .title{
+    font-weight: bold;
+    color: #000;
+    transition: .5s;
+    font-size: 1.2em;
+}
+
+.task-list .title:hover {
+    color: #ccc;
+}
+
+.actions{
+    display: flex;
+    justify-content: space-between;
+}
+
+.actions a{
+    margin-right: .9em ;
+}
+
+.actions i{
+    transition: .5s;
+    padding: 5px;
+    color: #333;
+}
+
+.actions a:hover > i{
+    background-color: #333;
+    color: #fff;
+}
+
+
