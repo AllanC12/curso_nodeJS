@@ -11,6 +11,7 @@ const conn = require("./db/conn");
 
 //routes
 const toughtRoutes = require('./routes/toughtRoutes')
+const authRoutes = require('./routes/authRoutes')
 
 //models
 const User = require('./models/User')
@@ -68,8 +69,9 @@ app.use((req,res, next) => {
 })
 
 app.use('/toughts',toughtRoutes)
-app.get('/',ToughtController.showToughts)
+app.use('/', authRoutes)
 
+app.get('/',ToughtController.showToughts)
 
 conn
 //   .sync({force: true})
