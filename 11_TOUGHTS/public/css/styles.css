@@ -47,6 +47,7 @@
 
 /* MESSAGES */
 .message{
+    z-index: 2;
     padding: 1em;
     color: #004084;
     background-color: #cce5ff;
