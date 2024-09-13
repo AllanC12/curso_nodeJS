@@ -2,12 +2,22 @@ const User = require('../models/User')
 
 
 module.exports = class AuthController {
-    static async login(req,res){
+    static login(req,res){
         res.render('auth/login')
     }
 
-    static async register(req,res){
+    static register(req,res){
         res.render('auth/register')
+    }
+
+    static async registerPost(req,res){
+        const {name,email,password,confirmpassword} = req.body
+
+        if(password != confirmpassword){
+            req.flash('message','As senhas não conferem, tente novamente!')
+            res.render('auth/register')
+            return
+        }
     }
 }
 
