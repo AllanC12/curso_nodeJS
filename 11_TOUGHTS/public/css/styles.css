@@ -29,6 +29,10 @@
 #navbar ul li{
     margin-left: 1em;
 }
+
+#navbar ul li p{
+ color: white;
+}
 #navbar ul li a{
     text-decoration: none;
     transition: .5s;
